@@ -19,6 +19,7 @@ jobs:
     permissions:
       contents: read
 
+
     steps:
 
     # The uses: keyword invokes a GitHub action:
@@ -51,8 +52,11 @@ jobs:
         key: cached-build-${{github.sha}}
         path: .
 
+
   # Uploads dependency graph to GitHub to receive Dependabot alerts 
   update_dependence_graph:
+
+    needs: [maven_test]  # Enforces that maven_test runs first
 
     runs-on: ubuntu-latest
 
